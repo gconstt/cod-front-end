@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verdão — Sociedade Esportiva Palmeiras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde: #0B6E37;
+    --verde-escuro: #06301C;
+    --verde-profundo: #04140C;
+    --branco: #F5F3EC;
+    --dourado: #C9A24B;
+    --texto-claro: #EDEAE0;
+    --texto-suave: rgba(237,234,224,0.68);
+    --linha: rgba(237,234,224,0.14);
+    --max: 1180px;
+  }
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background: var(--verde-profundo);
+    color: var(--texto-claro);
+    font-family: 'Inter', sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  img,svg{display:block; max-width:100%;}
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  @media (max-width:640px){
+    .wrap{ padding: 0 20px; }
+  }
+
+  /* ---------- textura alviverde de fundo ---------- */
+  .textura-alviverde{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      repeating-linear-gradient(
+        115deg,
+        rgba(11,110,55,0.10) 0px,
+        rgba(11,110,55,0.10) 46px,
+        rgba(245,243,236,0.035) 46px,
+        rgba(245,243,236,0.035) 92px
+      ),
+      var(--verde-profundo);
+  }
+
+  /* ---------- navegação ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    background: rgba(4,20,12,0.72);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--linha);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:74px;
+  }
+  .marca{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+  }
+  .marca .selo{
+    width:34px; height:34px;
+    border-radius:50%;
+    background: conic-gradient(from 180deg, var(--verde) 0 50%, var(--branco) 50% 100%);
+    border:1.5px solid var(--dourado);
+    flex-shrink:0;
+  }
+  .menu{
+    display:flex;
+    gap:34px;
+    font-size:0.88rem;
+    color: var(--texto-suave);
+  }
+  .menu a{
+    transition: color .2s ease;
+  }
+  .menu a:hover{ color: var(--branco); }
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .menu-toggle span{
+    width:22px; height:2px; background:var(--texto-claro);
+  }
+
+  @media (max-width:760px){
+    .menu{
+      position:fixed;
+      top:74px; left:0; right:0;
+      background: rgba(4,20,12,0.97);
+      flex-direction:column;
+      gap:0;
+      max-height:0;
+      overflow:hidden;
+      transition: max-height .35s ease;
+      border-bottom:1px solid var(--linha);
+    }
+    .menu.aberto{ max-height:280px; }
+    .menu a{ padding:16px 24px; border-top:1px solid var(--linha); }
+    .menu-toggle{ display:flex; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    padding-top:74px;
+    overflow:hidden;
+  }
+
+  #mancha-canvas{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0.55;
+  }
+
+  .selo-fundo{
+    position:absolute;
+    right:-8%;
+    top:50%;
+    transform:translateY(-50%);
+    width:640px;
+    height:640px;
+    opacity:0.14;
+    z-index:0;
+    pointer-events:none;
+  }
+  @media (max-width:900px){
+    .selo-fundo{ width:420px; height:420px; right:-18%; opacity:0.10;}
+  }
+
+  .hero-conteudo{
+    position:relative;
+    z-index:1;
+    max-width:720px;
+  }
+
+  .eyebrow-hero{
+    color: var(--dourado);
+    font-size:0.82rem;
+    font-weight:600;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow-hero::before{
+    content:"";
+    width:28px; height:1px;
+    background: var(--dourado);
+  }
+
+  .hero h1{
+    font-size: clamp(3.2rem, 8vw, 6.2rem);
+    line-height:0.94;
+    color: var(--branco);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color: var(--verde);
+    -webkit-text-stroke: 1.5px var(--branco);
+  }
+
+  .hero p.sub{
+    margin-top:26px;
+    font-size:1.15rem;
+    max-width:520px;
+    color: var(--texto-suave);
+  }
+
+  .hero-stats{
+    display:flex;
+    gap:48px;
+    margin-top:52px;
+    flex-wrap:wrap;
+  }
+  .hero-stats div{ min-width:110px; }
+  .hero-stats .num{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    font-weight:600;
+    color: var(--branco);
+  }
+  .hero-stats .lbl{
+    font-size:0.78rem;
+    color: var(--texto-suave);
+    margin-top:4px;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:36px;
+    left:32px;
+    font-size:0.75rem;
+    color: var(--texto-suave);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-cue .linha{
+    width:1px; height:34px;
+    background: linear-gradient(var(--dourado), transparent);
+    animation: cair 2s ease-in-out infinite;
+  }
+  @keyframes cair{
+    0%{ opacity:0; transform:translateY(-8px);}
+    50%{ opacity:1;}
+    100%{ opacity:0; transform:translateY(8px);}
+  }
+
+  /* ---------- seções gerais ---------- */
+  section{
+    padding:120px 0;
+    position:relative;
+  }
+  @media (max-width:640px){
+    section{ padding:80px 0; }
+  }
+
+  .cabecalho-secao{
+    max-width:600px;
+    margin-bottom:64px;
+  }
+  .eyebrow{
+    color: var(--dourado);
+    font-size:0.8rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .cabecalho-secao h2{
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    color: var(--branco);
+  }
+  .cabecalho-secao p{
+    margin-top:18px;
+    color: var(--texto-suave);
+    font-size:1.05rem;
+  }
+
+  /* ---------- linha do tempo ---------- */
+  .timeline{
+    position:relative;
+    border-left:1px solid var(--linha);
+    margin-left:6px;
+  }
+  .marco{
+    position:relative;
+    padding:0 0 56px 40px;
+  }
+  .marco:last-child{ padding-bottom:0; }
+  .marco::before{
+    content:"";
+    position:absolute;
+    left:-6px; top:4px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background: var(--verde);
+    border:2px solid var(--dourado);
+  }
+  .marco .ano{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color: var(--branco);
+    font-weight:600;
+  }
+  .marco p{
+    margin-top:8px;
+    color: var(--texto-suave);
+    max-width:560px;
+  }
+
+  /* ---------- números ---------- */
+  .grade-numeros{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:1px;
+    background: var(--linha);
+    border:1px solid var(--linha);
+  }
+  @media (max-width:900px){
+    .grade-numeros{ grid-template-columns: repeat(2, 1fr); }
+  }
+  .cartao-numero{
+    background: var(--verde-profundo);
+    padding:40px 28px;
+    transition: background .25s ease;
+  }
+  .cartao-numero:hover{ background: rgba(11,110,55,0.14); }
+  .cartao-numero .n{
+    font-family:'Fraunces', serif;
+    font-size:3rem;
+    color: var(--branco);
+    font-weight:600;
+    font-variant-numeric: tabular-nums;
+  }
+  .cartao-numero .n span{ color: var(--dourado); }
+  .cartao-numero .rotulo{
+    margin-top:10px;
+    font-size:0.85rem;
+    color: var(--texto-suave);
+  }
+
+  /* ---------- clássicos ---------- */
+  .classicos{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1px;
+    background: var(--linha);
+    border:1px solid var(--linha);
+  }
+  @media (max-width:860px){
+    .classicos{ grid-template-columns: 1fr; }
+  }
+  .classico{
+    background: var(--verde-profundo);
+    padding:38px 32px;
+  }
+  .classico .contra{
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color: var(--dourado);
+    margin-bottom:14px;
+  }
+  .classico h3{
+    font-size:1.5rem;
+    color: var(--branco);
+    margin-bottom:12px;
+  }
+  .classico p{ color: var(--texto-suave); font-size:0.95rem; }
+
+  /* ---------- estádio ---------- */
+  .estadio{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:64px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .estadio{ grid-template-columns:1fr; gap:40px; }
+  }
+  .estadio-lista{ margin-top:28px; }
+  .estadio-lista div{
+    display:flex;
+    justify-content:space-between;
+    padding:16px 0;
+    border-top:1px solid var(--linha);
+    font-size:0.95rem;
+  }
+  .estadio-lista div:last-child{ border-bottom:1px solid var(--linha); }
+  .estadio-lista span:first-child{ color: var(--texto-suave); }
+  .estadio-lista span:last-child{ color: var(--branco); font-weight:500; }
+
+  .ilustracao-estadio{
+    aspect-ratio: 4/3;
+    border:1px solid var(--linha);
+    background: rgba(11,110,55,0.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+  }
+
+  /* ---------- mascotes ---------- */
+  .mascotes{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:24px;
+  }
+  @media (max-width:700px){ .mascotes{ grid-template-columns:1fr; } }
+  .mascote{
+    border:1px solid var(--linha);
+    padding:32px;
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+  }
+  .mascote .icone{
+    width:52px; height:52px;
+    flex-shrink:0;
+    border-radius:50%;
+    background: var(--verde);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--branco);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+  }
+  .mascote h4{ color:var(--branco); font-family:'Fraunces',serif; font-size:1.2rem; margin-bottom:6px;}
+  .mascote p{ color:var(--texto-suave); font-size:0.92rem; }
+
+  /* ---------- rodapé ---------- */
+  footer{
+    border-top:1px solid var(--linha);
+    padding:56px 0 40px;
+  }
+  .rodape-grade{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  footer .lema{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    color:var(--branco);
+    max-width:340px;
+  }
+  footer .creditos{
+    font-size:0.8rem;
+    color: var(--texto-suave);
+    margin-top:24px;
+  }
+  footer nav{
+    display:flex;
+    gap:28px;
+    font-size:0.88rem;
+    color:var(--texto-suave);
+  }
+
+  ::selection{ background: var(--dourado); color:var(--verde-profundo); }
+</style>
+</head>
+<body>
+
+<div class="textura-alviverde"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="marca"><span class="selo"></span> Verdão SEP</div>
+    <div class="menu" id="menu">
+      <a href="#historia">História</a>
+      <a href="#numeros">Números</a>
+      <a href="#classicos">Clássicos</a>
+      <a href="#estadio">Estádio</a>
+      <a href="#mascotes">Mascotes</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <canvas id="mancha-canvas"></canvas>
+
+  <svg class="selo-fundo" viewBox="0 0 200 200" fill="none">
+    <circle cx="100" cy="100" r="96" stroke="#F5F3EC" stroke-width="1"/>
+    <circle cx="100" cy="100" r="82" stroke="#C9A24B" stroke-width="1"/>
+    <path d="M100 40 C120 60 132 90 100 160 C68 90 80 60 100 40 Z" fill="#0B6E37" opacity="0.9"/>
+    <path d="M100 55 C60 65 40 90 30 100 C50 95 75 90 100 100 Z" fill="#F5F3EC" opacity="0.85"/>
+    <path d="M100 55 C140 65 160 90 170 100 C150 95 125 90 100 100 Z" fill="#F5F3EC" opacity="0.85"/>
+    <path d="M100 70 C65 85 50 105 42 118 C62 108 85 100 100 108 Z" fill="#0B6E37" opacity="0.7"/>
+    <path d="M100 70 C135 85 150 105 158 118 C138 108 115 100 100 108 Z" fill="#0B6E37" opacity="0.7"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="hero-conteudo">
+      <div class="eyebrow-hero">Sociedade Esportiva Palmeiras · fundado em 1914</div>
+      <h1>Somos<br><em>Verdão</em></h1>
+      <p class="sub">De Palestra Itália a Sociedade Esportiva Palmeiras: mais de um século de história, o maior número de títulos brasileiros e uma torcida que canta em verde e branco por todo o país.</p>
+
+      <div class="hero-stats">
+        <div>
+          <div class="num" data-alvo="12">0</div>
+          <div class="lbl">Brasileirões</div>
+        </div>
+        <div>
+          <div class="num" data-alvo="3">0</div>
+          <div class="lbl">Libertadores</div>
+        </div>
+        <div>
+          <div class="num" data-alvo="4">0</div>
+          <div class="lbl">Copas do Brasil</div>
+        </div>
+        <div>
+          <div class="num" data-alvo="111">0</div>
+          <div class="lbl">Anos de história</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><div class="linha"></div> role para descer</div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <div class="eyebrow">Nossa história</div>
+      <h2>De uma comunidade a um gigante nacional</h2>
+      <p>Fundado por imigrantes italianos, o clube atravessou uma guerra, mudou de nome e virou o maior campeão do futebol brasileiro.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="marco">
+        <div class="ano">1914</div>
+        <p>Fundado em 26 de agosto por imigrantes italianos como Palestra Itália, com o objetivo de representar a comunidade italiana de São Paulo no esporte.</p>
+      </div>
+      <div class="marco">
+        <div class="ano">1942</div>
+        <p>Durante a Segunda Guerra Mundial, o clube é obrigado a abandonar o nome ligado à Itália. Nasce a Sociedade Esportiva Palmeiras: "não nos querem Palestra, pois seremos Palmeiras e nascemos para ser campeões".</p>
+      </div>
+      <div class="marco">
+        <div class="ano">1951</div>
+        <p>Conquista a Copa Rio, primeiro torneio intercontinental de clubes da história, unindo o país após a decepção do Maracanaço de 1950.</p>
+      </div>
+      <div class="marco">
+        <div class="ano">1960–70</div>
+        <p>A geração de Ademir da Guia vira sinônimo de futebol-arte e ganha o apelido de "Academia", um dos times mais admirados do país.</p>
+      </div>
+      <div class="marco">
+        <div class="ano">1999</div>
+        <p>Sob o comando de Luiz Felipe Scolari, conquista a primeira Copa Libertadores da América da sua história.</p>
+      </div>
+      <div class="marco">
+        <div class="ano">2014</div>
+        <p>No ano do centenário, o clube estreia sua nova casa: um estádio moderno erguido no mesmo terreno do histórico Palestra Itália.</p>
+      </div>
+      <div class="marco">
+        <div class="ano">2020–2021</div>
+        <p>Sob Abel Ferreira, o Palmeiras conquista duas Libertadores seguidas — algo inédito na história do clube.</p>
+      </div>
+      <div class="marco">
+        <div class="ano">2022–2023</div>
+        <p>Bicampeão brasileiro consecutivo, chega a 12 títulos do Campeonato Brasileiro Série A — o maior número entre todos os clubes do país.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="numeros" style="background:rgba(11,110,55,0.05);">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <div class="eyebrow">Em números</div>
+      <h2>O maior campeão do futebol brasileiro</h2>
+    </div>
+
+    <div class="grade-numeros">
+      <div class="cartao-numero">
+        <div class="n"><span>12</span></div>
+        <div class="rotulo">Campeonato Brasileiro Série A</div>
+      </div>
+      <div class="cartao-numero">
+        <div class="n"><span>3</span></div>
+        <div class="rotulo">Copas Libertadores da América</div>
+      </div>
+      <div class="cartao-numero">
+        <div class="n"><span>4</span></div>
+        <div class="rotulo">Copas do Brasil</div>
+      </div>
+      <div class="cartao-numero">
+        <div class="n"><span>27+</span></div>
+        <div class="rotulo">Campeonatos Paulistas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="classicos">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <div class="eyebrow">Rivalidades</div>
+      <h2>Os grandes clássicos do Verdão</h2>
+      <p>O calendário paulista é marcado por confrontos históricos que atravessam gerações de torcedores.</p>
+    </div>
+
+    <div class="classicos">
+      <div class="classico">
+        <div class="contra">CONTRA O CORINTHIANS</div>
+        <h3>Derby Paulista</h3>
+        <p>Considerado o maior clássico do país, opõe as duas torcidas mais numerosas de São Paulo desde os primeiros confrontos, ainda na década de 1910.</p>
+      </div>
+      <div class="classico">
+        <div class="contra">CONTRA O SANTOS</div>
+        <h3>Clássico da Saudade</h3>
+        <p>O duelo com o time da Baixada Santista carrega décadas de duelos decisivos, incluindo a final da Libertadores de 2020.</p>
+      </div>
+      <div class="classico">
+        <div class="contra">CONTRA O SÃO PAULO</div>
+        <h3>Choque-Rei</h3>
+        <p>O confronto entre os dois clubes do Morumbi e do Allianz/Nubank Parque decide títulos estaduais e continentais desde os anos 1930.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estadio" style="background:rgba(11,110,55,0.05);">
+  <div class="wrap">
+    <div class="estadio">
+      <div>
+        <div class="eyebrow">Nossa casa</div>
+        <h2>Nubank Parque</h2>
+        <p style="color:var(--texto-suave); margin-top:16px; max-width:480px;">Erguido no mesmo terreno do histórico Palestra Itália, o estádio é a casa do Palmeiras desde 2014 e recebeu, na sua estreia na Série A, o recorde de público que se repetiria diversas vezes nos anos seguintes.</p>
+
+        <div class="estadio-lista">
+          <div><span>Inauguração</span><span>19 de novembro de 2014</span></div>
+          <div><span>Capacidade</span><span>43.713 lugares</span></div>
+          <div><span>Localização</span><span>Perdizes, São Paulo</span></div>
+          <div><span>Torcida organizada</span><span>Mancha Alviverde</span></div>
+        </div>
+      </div>
+
+      <div class="ilustracao-estadio">
+        <svg viewBox="0 0 240 180" width="100%">
+          <ellipse cx="120" cy="130" rx="100" ry="34" fill="none" stroke="#0B6E37" stroke-width="2"/>
+          <ellipse cx="120" cy="130" rx="70" ry="22" fill="none" stroke="#F5F3EC" stroke-width="1.4"/>
+          <path d="M20 130 Q120 20 220 130" fill="none" stroke="#C9A24B" stroke-width="2"/>
+          <path d="M20 130 Q120 45 220 130" fill="none" stroke="#0B6E37" stroke-width="1.4" opacity="0.7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mascotes">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <div class="eyebrow">Símbolos</div>
+      <h2>Periquito e Porco</h2>
+      <p>Dois mascotes, uma só torcida: o oficial desde a fundação e o adotado pelo coração dos torcedores.</p>
+    </div>
+
+    <div class="mascotes">
+      <div class="mascote">
+        <div class="icone">P</div>
+        <div>
+          <h4>Periquito</h4>
+          <p>O mascote oficial do clube, um pequeno papagaio verde que representa o Palmeiras desde os primeiros anos de sua história.</p>
+        </div>
+      </div>
+      <div class="mascote">
+        <div class="icone">🐷</div>
+        <div>
+          <h4>Porco</h4>
+          <p>Adotado pela torcida em 1986 após provocações rivais, tornou-se o apelido carinhoso mais gritado nas arquibancadas e foi oficializado pelo clube em 2016.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap rodape-grade">
+    <div>
+      <div class="lema">"Nascemos para ser campeões."</div>
+      <div class="creditos">Site não-oficial, feito por torcedores para torcedores · Setembro de 2026</div>
+    </div>
+    <nav>
+      <a href="#historia">História</a>
+      <a href="#numeros">Números</a>
+      <a href="#estadio">Estádio</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // menu mobile
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', () => menu.classList.toggle('aberto'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('aberto')));
+
+  // contadores animados
+  const numeros = document.querySelectorAll('.hero-stats .num');
+  let jaContou = false;
+  function contarNumeros(){
+    if(jaContou) return;
+    jaContou = true;
+    numeros.forEach(el => {
+      const alvo = parseInt(el.dataset.alvo, 10);
+      const duracao = 1400;
+      const inicio = performance.now();
+      function passo(agora){
+        const progresso = Math.min((agora - inicio) / duracao, 1);
+        const facil = 1 - Math.pow(1 - progresso, 3);
+        el.textContent = Math.floor(facil * alvo);
+        if(progresso < 1) requestAnimationFrame(passo);
+        else el.textContent = alvo;
+      }
+      requestAnimationFrame(passo);
+    });
+  }
+  setTimeout(contarNumeros, 400);
+
+  // "mancha verde" — partículas subindo no hero
+  const canvas = document.getElementById('mancha-canvas');
+  const ctx = canvas.getContext('2d');
+  let largura, altura, particulas = [];
+
+  function redimensionar(){
+    largura = canvas.width = canvas.offsetWidth;
+    altura = canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', redimensionar);
+  redimensionar();
+
+  function criarParticula(){
+    return {
+      x: Math.random() * largura * 0.7,
+      y: altura + 20,
+      raio: 40 + Math.random() * 90,
+      vel: 0.15 + Math.random() * 0.35,
+      opacidade: 0.02 + Math.random() * 0.05
+    };
+  }
+  for(let i=0; i<14; i++) particulas.push(criarParticula());
+
+  function animar(){
+    ctx.clearRect(0,0,largura,altura);
+    particulas.forEach(p => {
+      p.y -= p.vel;
+      if(p.y < -100){
+        Object.assign(p, criarParticula());
+      }
+      const gradiente = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.raio);
+      gradiente.addColorStop(0, `rgba(11,110,55,${p.opacidade})`);
+      gradiente.addColorStop(1, 'rgba(11,110,55,0)');
+      ctx.fillStyle = gradiente;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.raio, 0, Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animar);
+  }
+  animar();
+
+  // respeita usuários que preferem menos movimento
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    canvas.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
