@@ -24,7 +24,11 @@ function App() {
       <li>Gerente de Projetos</li>
     </ul>
 
-
+    <h3>
+      Vou fazer faculdade de outra coisa, ser dev vai me ajudar?
+    </h3>
+    <p>Sim! A programação é uma habilidade que pode complementar diversas áreas de atuação. Ter conhecimento em desenvolvimento de software pode abrir portas para oportunidades em diferentes setores, além de permitir que você compreenda melhor como a tecnologia funciona e como ela pode ser aplicada em sua área de estudo.</p>
+    <p>Além disso, a programação pode ser uma habilidade valiosa para quem deseja empreender ou criar soluções inovadoras em sua área de atuação. Ter conhecimento em desenvolvimento de software pode ajudá-lo a criar produtos e serviços mais eficientes e escaláveis.</p>
 
     </div>      
   )
