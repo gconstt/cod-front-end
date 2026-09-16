@@ -109,3 +109,24 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+button {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 135%;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  gap: 12px;
+  margin: 5px;
+}
+button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
