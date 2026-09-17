@@ -95,6 +95,16 @@ function App() {
     alert('O peso da carga é: ' + PesoDaCarga)
   }
 
+  function MonikaC() {
+  let candidato = prompt('Qual o nome do candidato?');
+  let numeroDeUsos = Number(prompt('Quantas vezes o candidato usou o celular?'));
+
+  if (numeroDeUsos === 0) {
+    console.log(`O ${candidato} tem 10% de chances de sucesso!!`);
+  } else if (numeroDeUsos >= 1) {
+    console.log(`O ${candidato} tem menos de 1% de chances de sucesso!!`);
+  }
+}
 
   return (
     <div className="cont-app">
@@ -125,7 +135,10 @@ function App() {
         <hr />
 
         <button onClick={Telles}>Telles Transportes</button>
-    </div>
+        <button onClick={MonikaC}>Monika C</button>     
+</div>
+
+
   )
 }
 
