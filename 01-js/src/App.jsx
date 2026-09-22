@@ -1,6 +1,6 @@
 import './App.css'
 
-function App() { 
+function App() {  
   
   function testar() {
     let nome = prompt('Qual é o seu nome?')
@@ -161,7 +161,10 @@ function App() {
     let saldoFinal = SalarioJuca - totalGastos
 
     if (saldoFinal < 0)
-    alert('O saldo final do Mano Juca é: ' + saldoFinal)
+    alert('O mano Juca ta devendo: ' + saldoFinal)
+    
+    else (saldoFinal => 1)
+    alert('Sobro uns tantin ai pro mano juca. R$' + saldoFinal)
   }
 
   function RomeroBrique() {
@@ -193,16 +196,21 @@ function App() {
     let Agua = 0.5
     let refri = 0.2
 
+    alert('Voces estao em ' + ClientesNum + ', Entao receberam: ')
+
+    alert(ClientesCarne + 'KG')
+
     let ClientesCarne = ClientesNum * Carne
+
+    alert(ClientesCerveja + 'L/ML')
     let ClientesCerveja = ClientesNum * Cerveja
+
+    alert(ClientesAgua + 'L/ML')
     let ClientesAgua = ClientesNum * Agua
+
+    alert(Clientesrefri + 'L/ML')
     let Clientesrefri = ClientesNum * refri
 
-    alert('Voces estao em ' + ClientesNum + ', Entao receberam: ')
-    alert(ClientesCarne + 'KG')
-    alert(ClientesCerveja + 'L/ML')
-    alert(ClientesAgua + 'L/ML')
-    alert(Clientesrefri + 'L/ML')
   }
 
   return (
@@ -256,10 +264,13 @@ function App() {
 
         <button onClick={SeuGildao}>Seu Gildao</button>
 
+        <hr />
+
+        <h4>Exercícios Bloco C</h4>
+        <p>😢😢😢😢😢😢</p>
+
 </div>
-
-
   )
 }
 
-export default App
+export default App  
