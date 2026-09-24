@@ -52,7 +52,7 @@
 .btn-contatos {
   border: 1px solid var(--cor-borda);
   padding: 8px 20px;
-  border-radius: var(raio-pequeno);
+  border-radius: var(--raio-pequeno);
   transition: background-color 0.2s;
 }
 
