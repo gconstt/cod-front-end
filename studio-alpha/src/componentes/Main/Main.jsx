@@ -29,13 +29,13 @@ function Main() {
 
           <div className="servico-card2">
             <span>😔</span>
-            <h3>Responsividade</h3>
+            <h4>Responsividade</h4>
             <p>O mesmo site em qualquer tela</p>
           </div>
 
           <div className="servico-card3">
             <span>😪</span>
-            <h3>Performance</h3>
+            <h5>Performance</h5>
             <p>Paginas leves que carregam rápido</p>
           </div>
 
