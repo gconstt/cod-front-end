@@ -21,21 +21,21 @@ function Main() {
         <h2>Nossos serviços</h2>
 
         <div className="servicos-grid">
-          <div className="servico-card1">
+          <div className="servico-card">
             <span>👽</span>
-            <h3>Design de interface</h3>
+            <h3>Design de interface</h3>  
             <p>Telas claras, pensadas para o usúario</p>
           </div>
 
-          <div className="servico-card2">
+          <div className="servico-card">
             <span>😔</span>
-            <h4>Responsividade</h4>
+            <h3>Responsividade</h3>
             <p>O mesmo site em qualquer tela</p>
           </div>
 
-          <div className="servico-card3">
+          <div className="servico-card">
             <span>😪</span>
-            <h5>Performance</h5>
+            <h3>Performance</h3>
             <p>Paginas leves que carregam rápido</p>
           </div>
 

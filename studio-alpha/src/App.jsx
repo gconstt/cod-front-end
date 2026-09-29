@@ -1,5 +1,6 @@
 import Header from "./componentes/Header/header"
 import Main  from "./componentes/Main/Main"
+import Footer from "./componentes/Footer/Footer"
 
 function app() {
   return(
@@ -7,7 +8,11 @@ function app() {
       <Header />
 
       <Main />
+
+      <Footer/>
     </>
+
+    
   )
 }
 

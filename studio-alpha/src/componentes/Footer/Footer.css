@@ -1,0 +1,34 @@
+.footer {
+    border-top: 1px solid var(--cor-borda);
+    padding: 24px 0px;
+}
+
+.footer-conteiner{
+    max-width: var(--largura-maxima);
+    margin: 0px auto;
+    padding: 0 var(--padding-lateral);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer span{
+    font-size: 14px;
+    color: var(--cor-texto-sutil);
+}
+
+.footer-icon{
+    display: flex;
+    gap: 16px;
+}
+
+.footer-icons a{
+    font-size: 10px;
+    text-decoration: none;
+    color: var(--cor-texto-claro);
+    transition: color 0.2s;
+}
+
+.footer-icons a:hover{
+    color: var(--cor-titulo);   
+}
