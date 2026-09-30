@@ -1,0 +1,44 @@
+/* App.css */
+body {
+  background-color: #121214;
+  color: #ffffff;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center; /* Centraliza na horizontal */
+  align-items: flex-start; /* Alinha no topo */
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 40px;      /* Distância do topo da tela */
+}
+
+.app {
+  text-align: center;
+}
+
+.app h1 {
+  color: #a855f7;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.app button {
+  background-color: #7c3aed;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  margin: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.app button:hover {
+  background-color: #6d28d9;
+}
+
+.app p {
+  font-size: 20px;
+  margin-top: 24px;
+  color: #e9d5ff;
+}
