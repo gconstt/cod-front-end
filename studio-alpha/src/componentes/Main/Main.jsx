@@ -1,6 +1,13 @@
 import ServicoCard from "../ServicoCard/ServicoCard";
 import "./Main.css";
 
+  const servicos = [
+    {id: 1, icone: "🪟", titulo:"Design de interface", descricao:"Telas clara, pensadas para o usuário"},
+    {id: 2., icone: "📱", titulo: "Responsividade", descricao: "O mesmo site em qualquer tela"},
+    {id: 3., icone: "🚀", titulo: "Performance", descricao: "Pagins leves que carregam rápido"}
+
+  ]
+
 function Main() {
   return (
     <main className="main">
