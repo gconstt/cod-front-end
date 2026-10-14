@@ -24,4 +24,4 @@ function Feira() {
   );
 }
 
-export default Feira
+export default Feira    
