@@ -39,7 +39,7 @@ function App() {
         {pagina==2 && <Backend />}
         {pagina==3 && <Fullstack />}
         {pagina==4 && <Deploy />}
-        {pagina==5 && <Programador />}
+        {pagina==5 && <Programador />}  
         {pagina==6 && <Estudante />}
         {pagina==7 && <Resiliente />}
         {pagina==8 && <Aprendiz />}
