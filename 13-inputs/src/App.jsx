@@ -10,9 +10,9 @@ function App() {
 
   return (
     <div className="app">
+      <Ex0081 />
       <Demostracao />
       <Home />
-      <Ex0081 />
     </div>
   );
 }

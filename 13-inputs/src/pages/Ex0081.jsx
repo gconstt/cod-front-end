@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-// --- Atividade 1: Bomba de Pneu ---
 function BombaPneu() {
   const [inputN, setInputN] = useState('');
   const [inputM, setInputM] = useState('');
@@ -27,7 +26,6 @@ function BombaPneu() {
   );
 }
 
-// --- Atividade 2: Ho Ho Ho ---
 function HoHoHo() {
   const [inputN, setInputN] = useState('');
   const [resultado, setResultado] = useState('');
@@ -57,7 +55,6 @@ function HoHoHo() {
   );
 }
 
-// --- Atividade 3: PUM ---
 function Pum() {
   const [inputN, setInputN] = useState('');
   const [resultado, setResultado] = useState([]);
@@ -91,7 +88,6 @@ function Pum() {
   );
 }
 
-// --- Atividade 4: Tipo de Combustível ---
 function Combustivel() {
   const [inputCodigo, setInputCodigo] = useState('');
   const [alcool, setAlcool] = useState(0);
@@ -142,10 +138,9 @@ function Combustivel() {
   );
 }
 
-// --- Componente Principal (Junta todas as atividades) ---
 export default function Ex0081() {
   return (
-    <div>
+    <div className="ex0081">
       <h1>Ex0081</h1>
       <BombaPneu />
       <HoHoHo />

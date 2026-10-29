@@ -14,7 +14,7 @@ const[resultado, setResultado]=useState('Donde queres?')
     }
 
   return (
-    <div classNaS me='demostracao'>
+    <div className="demostracao">
         <h1>Demostração - Médias</h1>
         <label htmlFor="">Nota 1</label>
 
