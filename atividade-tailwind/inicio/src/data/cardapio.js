@@ -1,0 +1,45 @@
+export const cardapio = [
+  {
+    id: 1,
+    nome: 'Espresso',
+    preco: 'R$ 6,00',
+    descricao: 'Curto, intenso e encorpado. Feito com nosso blend da casa.',
+    imagem: 'https://picsum.photos/seed/espresso/600/400',
+    novo: true,
+  },
+  {
+    id: 2,
+    nome: 'Cappuccino',
+    preco: 'R$ 12,00',
+    descricao: 'Espresso, leite vaporizado e espuma cremosa com canela.',
+    imagem: 'https://picsum.photos/seed/cappuccino/600/400',
+  },
+  {
+    id: 3,
+    nome: 'Latte',
+    preco: 'R$ 11,00',
+    descricao: 'Suave e aveludado, com muito leite e um toque de baunilha.',
+    imagem: 'https://picsum.photos/seed/latte/600/400',
+  },
+  {
+    id: 4,
+    nome: 'Cold Brew',
+    preco: 'R$ 14,00',
+    descricao: 'Extraído a frio por 18 horas. Refrescante e pouco ácido.',
+    imagem: 'https://picsum.photos/seed/coldbrew/600/400',
+  },
+  {
+    id: 5,
+    nome: 'Croissant',
+    preco: 'R$ 9,00',
+    descricao: 'Massa folhada amanteigada, assada todas as manhãs.',
+    imagem: 'https://picsum.photos/seed/croissant/600/400',
+  },
+  {
+    id: 6,
+    nome: 'Bolo de cenoura',
+    preco: 'R$ 8,50',
+    descricao: 'Fofinho, com cobertura generosa de chocolate meio amargo.',
+    imagem: 'https://picsum.photos/seed/cake/600/400',
+  },
+]
